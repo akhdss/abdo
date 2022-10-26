@@ -49,3 +49,4 @@ workflows:
       - print-world:
           requires:
             - print-hello
+      - print-my-name
