@@ -64,5 +64,5 @@ workflows:
             - print-hello
       - print-my-name
       - print-output-file:
-        requires:
-          - print-my-name
+          requires:
+            - print-my-name
