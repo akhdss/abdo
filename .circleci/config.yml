@@ -36,9 +36,24 @@ jobs:
       - checkout
       - run:
           name: "show my name"
-          command: echo $NAME
-        
+          command: |
+            mkdir -p workspace
+            echo $NAME > my-name.txt > workspace/echo-output
+      - persist-to-workspace:
+        root: workspace
+        path:  
+          - echo-output
 
+  print-output-file:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: workspace
+      - run:
+          name: "show my name"
+          command: cat workspace/echo-output
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -50,3 +65,6 @@ workflows:
           requires:
             - print-hello
       - print-my-name
+      - print-output-file:
+        requires:
+          - print-my-name
