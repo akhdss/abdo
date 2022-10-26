@@ -24,19 +24,19 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Say hello"
+          name: "say world"
           command: "echo World!"
 
   print-my-name:
     docker:
       - image: circleci/node:13.8.0
     environment:
-      my-name: abdo
+      NAME: abdo
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: echo $my-name
+          name: "show my name"
+          command: echo $NAME
         
 
 
