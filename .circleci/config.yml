@@ -38,7 +38,7 @@ jobs:
           name: "show my name"
           command: |
             mkdir -p workspace
-            echo $NAME > my-name.txt > workspace/echo-output
+            echo $NAME > workspace/echo-output
       - persist-to-workspace:
         root: workspace
         path:  
