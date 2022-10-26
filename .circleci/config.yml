@@ -39,7 +39,7 @@ jobs:
           command: echo $NAME > ~/echo-output
       - persist-to-workspace:
         root: ~/
-        path:  
+        paths:  
           - echo-output
 
   print-output-file:
