@@ -36,11 +36,9 @@ jobs:
       - checkout
       - run:
           name: "show my name"
-          command: |
-            mkdir -p workspace
-            echo $NAME > workspace/echo-output
+          command: echo $NAME > ~/echo-output
       - persist-to-workspace:
-        root: workspace
+        root: ~/
         path:  
           - echo-output
 
@@ -50,10 +48,10 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: workspace
+          at: ~/
       - run:
           name: "show my name"
-          command: cat workspace/echo-output
+          command: cat ~/echo-output
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
