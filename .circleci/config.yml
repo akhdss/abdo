@@ -34,11 +34,13 @@ jobs:
       NAME: abdo
     steps:
       - checkout
-      - run: echo 'a' > ~/output.txt
+      - run:
+          name: "show my name"
+          command: echo $NAME > ~/output.txt
       - persist_to_workspace:
-        root: ~/
-        paths:  
-          - output.txt
+          root: ~/
+          paths:  
+            - output.txt
 
   print-output-file:
     docker:
@@ -47,7 +49,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/
-      - run: cat ~/output.txt
+      - run:
+          name: "show my name"
+          command: cat ~/output.txt
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
