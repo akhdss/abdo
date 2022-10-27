@@ -68,7 +68,7 @@ jobs:
       - run: return 1
       - run:
           command: echo failed
-          when: on-fail
+          when: on_fail
 # Invok e jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
