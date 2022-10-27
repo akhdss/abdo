@@ -60,6 +60,15 @@ jobs:
           name: "show my name"
           command: cat ~/output.txt
 
+  testing-on-fail:
+    docker: 
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run: return 1
+      - run:
+          command: echo failed
+      ]   when: on-fail
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -73,3 +82,4 @@ workflows:
       - print-output-file:
           requires:
             - print-my-name
+      - testing-on-fail
